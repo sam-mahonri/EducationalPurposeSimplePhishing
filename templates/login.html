@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Entre na sua conta Gooogle</title>
+</head>
+<body>
+    <section class="flexMinCenter">
+        <div class="panel">
+            <h1><i class="fa-brands fa-google"></i></h1>
+            <h1>Fazer login</h1>
+            <h3>Use sua Conta do Gooogle</h3>
+            
+            <span class="littleMargin"></span>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <input type="email" placeholder="E-mail ou telefone" name="email">
+                <input type="password" placeholder="Digite sua senha" name="password">
+                <a href="">Esqueceu sua senha?</a>
+                <span class="littleMargin"></span>
+                
+                <p>Não está no seu computador? Use o modo visitante para fazer login com privacidade. <a href="">Saiba mais sobre como usar o Modo visitante</a></p>
+                <p style="text-align: center; opacity: 0.5;">Este site é apenas para fins educacionais, os dados inseridos não são armazenados, <b>nunca</b> envie seu email e senha reais.</p>
+                <div class="flex rowFlex">
+                    <a><button type="button" class="plainButton">Criar Conta</button></a>
+                    <span class="flexExpand"></span>
+                    <button class="primaryButton">Avançar</button>
+                </div>
+            </form>
+            
+        </div>
+        
+    </section>
+    
+</body>
+</html>

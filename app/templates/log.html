@@ -41,24 +41,27 @@
                 <span class="flexExpand"></span>
                 <button onclick="window.location.reload()" class="primaryButton"><i class="fa-solid fa-arrow-rotate-right"></i>Atualizar</button>
             </div>
+
             <span class="littleMargin"></span>
+
             {% if log == [] %}
                 <h3 style="align-self: center; text-align: center; opacity: 0.5;">Sem dados vazados</h3>
             {% endif %}
+
             {% for leak in log | reverse %}
-            <div class="innerPanel" style="width: 100% !important;">
-                <p style="align-self: center; ">{{ format_relative_time(leak.timestamp) }}</p>
-                <ul class="wp100">
-                    
-                        <li> <b>E-mail: </b> {{leak.email }}</li>
-                        <li> <b>Senha: </b> {{leak.password }}</li>
-                        <li> <b>Endereço IP </b> {{leak.ip_address }}</li>
-                </ul>
-            </div>
-           
-            
+                <div class="innerPanel" style="width: 100% !important; margin-top: 8px;">
+                    <p style="align-self: center; ">{{ format_relative_time(leak.timestamp) }}</p>
+                    <ul class="wp100">
+                        
+                            <li> <b>E-mail: </b> {{leak.email }}</li>
+                            <li> <b>Senha: </b> {{leak.password }}</li>
+                            <li> <b>Endereço IP </b> {{leak.ip_address }}</li>
+                    </ul>
+                </div>
             {% endfor %}
+
             <span class="littleMargin"></span>
+
             <p style="color: #e62169; margin-top: 8px;">Você pode apagar essas informações sensíveis a qualquer momento, estando de acordo com a LGPD, é importante ressaltar ainda que este site é destinado a fins educativos sobre cibersegurança e apresenta um dos tipos mais comuns e fáceis de ataque, o phishing.</p>
         </div>
         

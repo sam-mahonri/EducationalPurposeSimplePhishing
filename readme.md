@@ -8,7 +8,7 @@ Esta é uma aplicação Flask de phishing desenvolvida com propósitos educacion
 - **Coleta de Credenciais:** Quando os usuários inserem suas credenciais na página de login falsa, a aplicação as armazena em um arquivo de registro para fins educacionais. Neste exemplo, as credenciais são apenas mostradas no log, sem banco de dados.
 - **Alerta de Phishing:** Uma mensagem de alerta é exibida aos usuários após tentarem fazer login na página falsa, informando que estão em um ambiente de phishing e incentivando-os a ter cuidado.
 
-## Rodando a Aplicação em Ambiente de Desenvolvimento
+## Rodando a Aplicação em Ambiente local de Desenvolvimento
 
 Siga estas etapas para executar a aplicação Flask de phishing em um ambiente de desenvolvimento:
 
@@ -23,9 +23,15 @@ Siga estas etapas para executar a aplicação Flask de phishing em um ambiente d
    ```bash
    python -m venv .venv
    ```
+   Caso seja a primeira vez trabalhando com ambientes virtuais, remova a restrição do PowerShell usando:
+   ```bash
+   set-executionpolicy RemoteSigned
+   ```
+   Ative o ambiente:
    ```bash
    .venv/Scripts/Activate.ps1
    ```
+   Instale as dependências:
    ```bash
    pip install -r requirements.txt
    ```
@@ -46,6 +52,23 @@ Siga estas etapas para executar a aplicação Flask de phishing em um ambiente d
 
 7. **Encerre a Aplicação:**
    Quando terminar, pressione `Ctrl + C` no terminal para encerrar o servidor Flask.
+
+## Implantação (Deploy)
+**AVISO: NUNCA implante com a intenção de roubar informações, isso é crime, portanto use apenas para casos específicos, jamais com a intenção de enganar pessoas.**
+
+- **Railway.app e Heroku**: Basta iniciar o deploy, não é necessário inserir nenhuma variável de ambiente, já está preparado.
+
+## Rotas
+
+Tela de login falsa
+```
+/login
+```
+Lista de vazamentos
+```
+/leaks
+```
+Tudo é guardado em memória, é volátil, e pode ser apagado a qualquer momento.
 
 ## Avisos Legais
 

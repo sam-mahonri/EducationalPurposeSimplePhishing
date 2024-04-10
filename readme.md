@@ -19,12 +19,14 @@ Siga estas etapas para executar a aplicação Flask de phishing em um ambiente d
    cd EducationalPurposeSimplePhishing
    ```
 
-2. **Crie e ative o ambiente virtual e instale as dependências:**
+2. **Crie e ative o ambiente virtual e instale as dependências em ordem:**
    ```bash
    python -m venv .venv
-
+   ```
+   ```bash
    .venv/Scripts/Activate.ps1
-
+   ```
+   ```bash
    pip install -r requirements.txt
    ```
 

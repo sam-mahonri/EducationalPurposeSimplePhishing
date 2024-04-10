@@ -1,0 +1,231 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+/* Define as propriedades CSS para evitar repetição dentro do arquivo
+    As cores do tema padrão são escuras
+*/
+:root{
+    /* Propriedades fixas */
+
+    --transition-duration: 0.3s;
+
+    --dark-color: #381272;
+    --dark-shadow: #202020;
+    --light-color: #e5ebf2;
+    --sec-theme-color: rgb(54, 54, 54);
+    --secondary-dark: rgb(29, 29, 29);
+    --secondary-light: rgb(255, 255, 255);
+
+    --padding-input: 18px;
+    --padding-button: 13px 22px;
+    --padding-medium: 18px;
+    --padding-large: 18px;
+
+    --font-size-p: 11pt;
+
+    --gap-small: 8px;
+
+    --border-radius-0: 4px;
+    --border-radius-3: 4px;
+
+    --min-panel-width: 320px;
+
+    --theme-color: #3255d4;
+
+
+    /* Propriedades atuais */
+
+    --current-back-color: var(--dark-color);
+    --current-text-color: var(--light-color);
+    --current-secondary-color: var(--secondary-dark);
+}
+
+
+/* Define as propriedades atuais para o tema claro */
+:root.light-theme{
+
+    /* Propriedades atuais */
+
+    --current-back-color: var(--light-color);
+    --current-text-color: var(--dark-color);
+    --current-secondary-color: var(--secondary-light);
+}
+
+footer{
+    position: fixed;
+    bottom: 32px;
+    width: 100%;
+    padding: 16px;
+}footer *{
+    text-align: center;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body{
+    background-color: var(--current-back-color);
+}
+
+*{
+    transition-duration: var(--transition-duration);
+    font-weight: 300;
+    font-family: 'Lexend', sans-serif;
+    color: var(--current-text-color);
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, p{
+    margin: 0;
+}
+
+p, a{
+    font-size: var(--font-size-p);
+}
+
+a{
+    font-weight: 400;
+    color: var(--current-text-color);
+    text-decoration: none;
+}a:hover{
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+b{
+    font-weight: 600;
+}
+
+h1{
+    font-size: 24pt;
+}
+
+.flexMinCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 32px;
+}
+
+.panel{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: var(--light-color);
+    padding: var(--padding-large);
+    border-radius: var(--border-radius-0);
+    width: var(--min-panel-width);
+}
+.panel *{
+    color: var(--dark-color);
+}
+.flex{
+    display: flex;
+}
+
+.rowFlex{
+    flex-direction: row;
+}
+
+.alignCenter{
+    align-items: center;
+    
+}
+
+.columnFlex{
+    flex-direction: column;
+}
+
+.flexExpand{
+    flex: 1;
+}
+
+input{
+    padding: var(--padding-input);
+    outline: none;
+    border: solid 1px var(--current-text-color);
+    border-radius: var(--border-radius-3);
+}input:focus{
+    border-color: var(--theme-color);
+    box-shadow: inset 0px 0px 0px 1px var(--theme-color);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--gap-small);
+}
+
+.square, .circle{
+    opacity: 12%;
+    position: fixed;
+    width: 40%;
+    height: calc(30vh/40%);
+    aspect-ratio: 1/1;
+    background-color: black;
+    z-index: -1;
+    rotate: 45deg;
+    object-fit: contain;
+
+}
+
+.square{
+    top: -92px;
+    left: -92px;
+}
+
+.circle{
+    bottom: -92px;
+    right: -92px;
+    border-radius: 50%;
+}
+
+button{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: var(--border-radius-0);
+    padding: var(--padding-button);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.plainButton{
+    background-color: transparent;
+    color: var(--theme-color) !important;
+}.plainButton:hover{
+    background-color: var(--current-back-color);
+}
+
+.primaryButton{
+    background-color: var(--sec-theme-color);
+    color: var(--light-color) !important;
+    translate: 0 -4px;
+    box-shadow: 0px 4px var(--dark-shadow);
+}.primaryButton:hover{
+    translate: 0px 0px;
+    box-shadow: 0px 0px var(--dark-shadow);
+    
+}
+
+.littleMargin{
+    margin: 22px;
+}
+
+.wp100{
+    width: 100%;
+}
+
+@media only screen and (max-width: 700px){
+    .panel{
+        width: 100%;
+    }
+}

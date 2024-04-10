@@ -28,7 +28,7 @@ def get_client_ip():
 
 @app.route('/leaks')
 def log():
-    return render_template('log.html', log=leaklog.log)
+    return render_template('leaks.html', log=leaklog.log)
 
 @app.route('/')
 def home():

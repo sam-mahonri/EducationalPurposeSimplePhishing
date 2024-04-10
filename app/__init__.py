@@ -16,7 +16,7 @@ def sobre():
     if request.method == "POST":
         if form.validate_on_submit():
             print(form.data)
-            return redirect("https://kahoot.com")
+            return redirect("https://kahoot.it")
 
     return render_template('login.html', form = form)
 

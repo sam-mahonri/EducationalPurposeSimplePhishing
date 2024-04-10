@@ -26,7 +26,7 @@ def get_client_ip():
     # Se o cabeçalho X-Forwarded-For não estiver presente, retorne o endereço IP remoto padrão
     return request.remote_addr
 
-@app.route('/leaks')
+@app.route('/leaks/log')
 def log():
     return render_template('leaks.html', log=leaklog.log)
 
@@ -56,7 +56,7 @@ def sobre():
 @app.route('/clear')
 def clear_leak():
     leaklog.log.clear()
-    return redirect('/leaks')
+    return redirect('/leaks/log')
 
 app.jinja_env.globals.update(format_relative_time=relative_timedelta.format_relative_time)
 
